@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cadastro de Servos - Ministério Kids</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+<header class="header">
+<div class="header-content">
+<div class="logo-container">
+<img alt="Logo Ministério Kids" class="logo" src="uploaded_files/image (2).png?expires=1777685363&amp;tid=66f4ef57-176f-49f0-873d-f6552d28dc79&amp;signature=a6d6a9183ca150b1db05dac5ab2d27b1f47c98889f1e14062d93c3ba4a32684c"/>
+</div>
+<h1>Cadastro de Servos</h1>
+<p>Ministério Kids</p>
+</div>
+</header>
+<main class="main-content">
+<!-- Formulário de Cadastro -->
+<section class="form-section">
+<h2><i class="fas fa-user-plus"></i> Novo Cadastro</h2>
+<form class="cadastro-form" id="cadastroForm">
+<div class="form-group">
+<label for="nome">
+<i class="fas fa-user"></i>
+                            Nome Completo *
+                        </label>
+<input id="nome" name="nome" required="" type="text"/>
+<span class="error-message" id="nome-error"></span>
+</div>
+<div class="form-group">
+<label for="email">
+<i class="fas fa-envelope"></i>
+                            Email *
+                        </label>
+<input id="email" name="email" required="" type="email"/>
+<span class="error-message" id="email-error"></span>
+</div>
+<div class="form-group">
+<label for="dataNascimento">
+<i class="fas fa-calendar-alt"></i>
+                            Data de Nascimento *
+                        </label>
+<input id="dataNascimento" name="dataNascimento" required="" type="date"/>
+<span class="error-message" id="data-error"></span>
+</div>
+<div class="form-group">
+<label for="documento">
+<i class="fas fa-file-upload"></i>
+                            Atestado de Antecedentes Criminais *
+                        </label>
+<div class="file-upload-area" id="fileUploadArea">
+<input accept=".pdf,.jpg,.jpeg,.png" id="documento" name="documento" required="" type="file"/>
+<div class="upload-content">
+<i class="fas fa-cloud-upload-alt"></i>
+<p>Clique aqui ou arraste o arquivo</p>
+<small>Formatos aceitos: PDF, JPG, JPEG, PNG (máx. 5MB)</small>
+</div>
+</div>
+<div class="file-preview" id="filePreview"></div>
+<span class="error-message" id="documento-error"></span>
+</div>
+<div class="form-actions">
+<button class="btn-primary" type="submit">
+<i class="fas fa-save"></i>
+                            Cadastrar Servo
+                        </button>
+<button class="btn-secondary" onclick="limparFormulario()" type="button">
+<i class="fas fa-eraser"></i>
+                            Limpar
+                        </button>
+</div>
+</form>
+</section>
+<!-- Lista de Cadastros -->
+<section class="list-section">
+<div class="section-header">
+<h2><i class="fas fa-users"></i> Servos Cadastrados</h2>
+<div class="search-box">
+<i class="fas fa-search"></i>
+<input id="searchInput" placeholder="Buscar por nome ou email..." type="text"/>
+</div>
+</div>
+<div class="stats">
+<div class="stat-card">
+<i class="fas fa-users"></i>
+<div>
+<span class="stat-number" id="totalServos">0</span>
+<span class="stat-label">Total de Servos</span>
+</div>
+</div>
+<div class="stat-card">
+<i class="fas fa-check-circle"></i>
+<div>
+<span class="stat-number" id="documentosOk">0</span>
+<span class="stat-label">Documentos OK</span>
+</div>
+</div>
+</div>
+<div class="table-container">
+<table class="servos-table">
+<thead>
+<tr>
+<th>Nome</th>
+<th>Email</th>
+<th>Data Nascimento</th>
+<th>Idade</th>
+<th>Documento</th>
+<th>Data Cadastro</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody id="servosTableBody">
+<!-- Dados serão inseridos aqui via JavaScript -->
+</tbody>
+</table>
+<div class="empty-state" id="emptyState">
+<i class="fas fa-users-slash"></i>
+<h3>Nenhum servo cadastrado</h3>
+<p>Comece adicionando o primeiro servo ao ministério kids</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Modal para visualizar documento -->
+<div class="modal" id="documentModal">
+<div class="modal-content">
+<div class="modal-header">
+<h3>Visualizar Documento</h3>
+<button class="close-btn" onclick="fecharModal()">×</button>
+</div>
+<div class="modal-body" id="modalBody">
+<!-- Conteúdo do documento será inserido aqui -->
+</div>
+</div>
+</div>
+<!-- Modal de confirmação -->
+<div class="modal" id="confirmModal">
+<div class="modal-content small">
+<div class="modal-header">
+<h3>Confirmar Exclusão</h3>
+</div>
+<div class="modal-body">
+<p>Tem certeza que deseja excluir este cadastro?</p>
+<div class="modal-actions">
+<button class="btn-danger" id="confirmDelete">Excluir</button>
+<button class="btn-secondary" onclick="fecharModal()">Cancelar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
